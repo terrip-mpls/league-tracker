@@ -1,12 +1,16 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('tracker', [
-  'ngRoute',
-  'tracker.view1',
-  'tracker.view2',
+var trackerApp = angular.module('tracker', [
+  'ui.router',
+  'ui.bootstrap',
+  'tracker.standings',
+  'tracker.player-stats',
   'tracker.version'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+]);
+
+trackerApp.config(function ($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise('/standings');
+
+});
